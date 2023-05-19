@@ -6,3 +6,7 @@
     padding: 0;
     color: var(--color-cream);
 }
+
+.bodyTextAccentStyles {
+    color: var(--color-pink);
+}

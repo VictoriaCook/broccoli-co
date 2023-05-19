@@ -3,7 +3,7 @@ import styles from './BodyText.module.css';
 
 const BodyText: React.FC = () => {
     return (
-        <p className={styles.bodyTextStyles}>Be the first to know when we launch.</p>
+        <p className={styles.bodyTextStyles}>Be the <span className={styles.bodyTextAccentStyles}>first</span> to know when we launch.</p>
     );
 };
 
