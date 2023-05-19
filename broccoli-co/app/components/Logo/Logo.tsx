@@ -3,7 +3,7 @@ import styles from './Logo.module.css';
 
 const Logo: React.FC = () => {
     return (
-        <p className={styles.companyLogo}>BROCCOLI & CO.</p>
+        <h1 className={styles.companyLogo}>Broccoli & Co.</h1>
     );
 };
 
