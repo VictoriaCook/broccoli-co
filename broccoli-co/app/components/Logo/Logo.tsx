@@ -1,8 +1,9 @@
-import React, { FC } from 'react';
+import React from 'react';
+import styles from './Logo.module.css';
 
-const Logo: FC = () => {
+const Logo: React.FC = () => {
     return (
-        <p>BROCCOLI & CO.</p>
+        <p className={styles.companyLogo}>BROCCOLI & CO.</p>
     );
 };
 
