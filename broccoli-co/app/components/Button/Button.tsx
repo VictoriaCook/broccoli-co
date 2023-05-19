@@ -7,9 +7,9 @@ interface ButtonProps {
 }
 
 const Button: FC<ButtonProps> = (props) => {
-  const handleClick = () => {
-    console.log('Button clicked');
-  };
+  // const handleClick = () => {
+  //   console.log('Button clicked');
+  // };
 
   return (
     <button className={styles.buttonStyles} onClick={props.onClick}>{props.buttonText}</button>
