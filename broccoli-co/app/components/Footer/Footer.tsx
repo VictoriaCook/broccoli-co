@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
     return (
         <footer className={styles.footerStyles}>
             <p className={styles.footerText}>Made with <span className={styles.footerAccentStyles}>❤</span> in Melbourne.</p>
-            <p className={styles.footerText}>© 2023 Broccoli & Co. All rights reserved.</p>
+            <small className={styles.footerText}>© 2023 Broccoli & Co. All rights reserved.</small>
         </footer>
     );
 };
