@@ -6,6 +6,7 @@ import SubmitButton from '../SubmitButton/SubmitButton';
 import { areEmailsEqual } from '../../utils/areEmailsEqual/areEmailsEqual';
 import { isFullNameValid } from '../../utils/isFullNameValid/isFullNameValid';
 import { isEmailValid } from '../../utils/isEmailValid/isEmailValid';
+import styles from './InvitationModal.module.css';
 
 interface InvitationModalProps {
   open: boolean;
@@ -78,15 +79,15 @@ const InvitationModal: React.FC<InvitationModalProps> = ({ open, onHide, onSucce
 
   return (
     <>
-      <Modal title="Basic Modal" open={open} onOk={handleOk} onCancel={onHide}>
+      <Modal open={open} onOk={handleOk} onCancel={onHide}>
         <Form onSubmit={handleSubmit} formHeading="Request an invite">
           <p>{validationError}</p>
           <TextInput value={fullName} label="fullName" placeholder="Full name" onChange={handleInputChange} />
           <TextInput value={email} label="email" placeholder="Email" onChange={handleInputChange} />
           <TextInput value={confirmEmail} label="confirmEmail" placeholder="Confirm email" onChange={handleInputChange} />
           <SubmitButton buttonText={submitButtonText} />
+          <p className={styles.serverErrorStyles}>{serverError}</p>
         </Form>
-        <p>{serverError}</p>
       </Modal>
     </>
   );
