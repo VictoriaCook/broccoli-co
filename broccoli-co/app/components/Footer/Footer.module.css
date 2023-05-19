@@ -6,7 +6,7 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    border-top: var(--color-cream) 1.5px solid;
+    border-top: var(--color-cream) 1px solid;
 }
 
 .footerText {
