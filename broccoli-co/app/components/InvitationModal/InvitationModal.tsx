@@ -79,7 +79,7 @@ const InvitationModal: React.FC<InvitationModalProps> = ({ open, onHide, onSucce
 
   return (
     <>
-      <Modal open={open} onOk={handleOk} onCancel={onHide}>
+      <Modal open={open} footer={null} onOk={handleOk} onCancel={onHide}>
         <Form onSubmit={handleSubmit} formHeading="Request an invite">
           <p>{validationError}</p>
           <TextInput value={fullName} label="fullName" placeholder="Full name" onChange={handleInputChange} />
