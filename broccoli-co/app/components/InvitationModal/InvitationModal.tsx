@@ -79,12 +79,12 @@ const InvitationModal: React.FC<InvitationModalProps> = ({ open, onHide, onSucce
 
   return (
     <>
-      <Modal open={open} footer={null} onOk={handleOk} onCancel={onHide}>
+      <Modal className="modalStyles" open={open} footer={null} onOk={handleOk} onCancel={onHide}>
         <Form onSubmit={handleSubmit} formHeading="Request an invite">
           <p>{validationError}</p>
-          <TextInput value={fullName} label="fullName" placeholder="Full name" onChange={handleInputChange} />
-          <TextInput value={email} label="email" placeholder="Email" onChange={handleInputChange} />
-          <TextInput value={confirmEmail} label="confirmEmail" placeholder="Confirm email" onChange={handleInputChange} />
+          <TextInput name="fullName" value={fullName} label="fullName" isVisuallyHidden={true} placeholder="Full name" onChange={handleInputChange} />
+          <TextInput name="email" value={email} label="email" isVisuallyHidden={true} placeholder="Email" onChange={handleInputChange} />
+          <TextInput name="confirmEmail" value={confirmEmail} isVisuallyHidden={true} label="confirmEmail" placeholder="Confirm email" onChange={handleInputChange} />
           <SubmitButton buttonText={submitButtonText} />
           <p className={styles.serverErrorStyles}>{serverError}</p>
         </Form>
