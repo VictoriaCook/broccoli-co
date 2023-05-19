@@ -1,0 +1,8 @@
+.formStyles {
+    background-color: var(--color-dark-green);
+    color: var(--color-cream);
+    /* padding: 10px; */
+    margin: 10px;
+    width: 100%;
+    text-align: center;
+}

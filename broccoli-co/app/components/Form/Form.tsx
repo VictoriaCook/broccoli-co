@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './Form.module.css';
 
 interface FormProps {
   onSubmit: (e: React.FormEvent) => Promise<void>;
@@ -8,7 +9,7 @@ interface FormProps {
 
 const Form: React.FC<FormProps> = (props) => {
   return (
-    <form onSubmit={props.onSubmit}>
+    <form className={styles.formStyles} onSubmit={props.onSubmit}>
       <h2>{props.formHeading}</h2>
       {props.children}
     </form>
