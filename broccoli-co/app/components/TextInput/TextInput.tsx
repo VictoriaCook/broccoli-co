@@ -1,4 +1,5 @@
 import React, { ChangeEvent } from 'react';
+import styles from './TextInput.module.css';
 
 interface Props {
   label: string;
@@ -13,6 +14,7 @@ const TextInput: React.FC<Props> = (props) => {
       <label htmlFor={props.label}></label>
       <br />
       <input
+        className={styles.textInputStyles}
         type="text"
         id={props.label}
         name={props.label}
