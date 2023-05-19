@@ -12,3 +12,7 @@
 .footerText {
     color: var(--color-cream);
 }
+
+.footerAccentStyles {
+    color: var(--color-pink);
+}
