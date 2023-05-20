@@ -1,0 +1,18 @@
+.footerStyles {
+    background-color: var(--color-dark-green);
+    padding: 1rem;
+    text-align: center;
+    margin-top: 2rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-top: var(--color-cream) 1px solid;
+}
+
+.footerText {
+    color: var(--color-cream);
+}
+
+.footerAccentStyles {
+    color: var(--color-pink);
+}

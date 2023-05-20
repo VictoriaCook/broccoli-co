@@ -1,0 +1,7 @@
+.headerStyles {
+    background-color: var(--color-dark-green);
+    width: 100%;
+    /* height: 80px; */
+    padding: 2rem;
+    border-bottom: var(--color-cream) 1px solid;
+}

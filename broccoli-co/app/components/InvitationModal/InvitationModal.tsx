@@ -6,6 +6,7 @@ import SubmitButton from '../SubmitButton/SubmitButton';
 import { areEmailsEqual } from '../../utils/areEmailsEqual/areEmailsEqual';
 import { isFullNameValid } from '../../utils/isFullNameValid/isFullNameValid';
 import { isEmailValid } from '../../utils/isEmailValid/isEmailValid';
+import styles from './InvitationModal.module.css';
 
 interface InvitationModalProps {
   open: boolean;
@@ -56,11 +57,14 @@ const InvitationModal: React.FC<InvitationModalProps> = ({ open, onHide, onSucce
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name: fullName, email: email }),
         });
-        const text = await response.text();
+        
         if (response.status === 200) {
           onSuccess();
         } else {
-          setServerError(text);
+          const text = await response.text();
+          const json = JSON.parse(text);
+          const errorMessage = json.errorMessage;
+          setServerError(errorMessage);
         }
       } catch (error) {
         console.log(error);
@@ -68,25 +72,17 @@ const InvitationModal: React.FC<InvitationModalProps> = ({ open, onHide, onSucce
     }
   };
 
-  const handleOk = () => {
-    // setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    // setIsModalOpen(false);
-  };
-
   return (
     <>
-      <Modal title="Basic Modal" open={open} onOk={handleOk} onCancel={onHide}>
+      <Modal className="modalStyles" maskStyle={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }} centered={true} width={350} open={open} footer={null} onCancel={onHide}>
         <Form onSubmit={handleSubmit} formHeading="Request an invite">
           <p>{validationError}</p>
-          <TextInput value={fullName} label="fullName" placeholder="Full name" onChange={handleInputChange} />
-          <TextInput value={email} label="email" placeholder="Email" onChange={handleInputChange} />
-          <TextInput value={confirmEmail} label="confirmEmail" placeholder="Confirm email" onChange={handleInputChange} />
+          <TextInput name="fullName" value={fullName} label="fullName" isVisuallyHidden={true} placeholder="Full name" onChange={handleInputChange} />
+          <TextInput name="email" value={email} label="email" isVisuallyHidden={true} placeholder="Email" onChange={handleInputChange} />
+          <TextInput name="confirmEmail" value={confirmEmail} isVisuallyHidden={true} label="confirmEmail" placeholder="Confirm email" onChange={handleInputChange} />
           <SubmitButton buttonText={submitButtonText} />
+          <p className={styles.serverErrorStyles}>{serverError}</p>
         </Form>
-        <p>{serverError}</p>
       </Modal>
     </>
   );

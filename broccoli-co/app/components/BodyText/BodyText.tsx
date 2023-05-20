@@ -1,8 +1,13 @@
 import React from 'react';
+import styles from './BodyText.module.css';
 
-const BodyText: React.FC = () => {
+interface BodyTextProps {
+    children: React.ReactNode;
+}
+
+const BodyText: React.FC<BodyTextProps> = (props) => {
     return (
-        <p>Be the first to know when we launch.</p>
+        <p className={styles.bodyTextStyles}>{props.children}</p>
     );
 };
 
