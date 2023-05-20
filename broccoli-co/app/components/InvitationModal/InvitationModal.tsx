@@ -69,17 +69,9 @@ const InvitationModal: React.FC<InvitationModalProps> = ({ open, onHide, onSucce
     }
   };
 
-  const handleOk = () => {
-    // setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    // setIsModalOpen(false);
-  };
-
   return (
     <>
-      <Modal className="modalStyles" maskStyle={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }} open={open} footer={null} onOk={handleOk} onCancel={onHide}>
+      <Modal className="modalStyles" maskStyle={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }} centered={true} open={open} footer={null}>
         <Form onSubmit={handleSubmit} formHeading="Request an invite">
           <p>{validationError}</p>
           <TextInput name="fullName" value={fullName} label="fullName" isVisuallyHidden={true} placeholder="Full name" onChange={handleInputChange} />
