@@ -11,7 +11,7 @@ interface InvitationSuccessModalProps {
 const InvitationSuccessModal: React.FC<InvitationSuccessModalProps> = ({ open, onHide }) => {
   return (
     <>
-      <Modal className="modalStyles" maskStyle={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }} open={open} footer={null} onOk={onHide} onCancel={onHide}>
+      <Modal className="modalStyles" maskStyle={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }} centered={true} open={open} footer={null} onOk={onHide} onCancel={onHide}>
         <div className={styles.successDivStyles}>
           <h2 className={styles.successH2Styles}>All done!</h2>
           <p className={styles.successTextStyles}>You will be one of the first to experience Broccoli & Co. when we launch.</p>
