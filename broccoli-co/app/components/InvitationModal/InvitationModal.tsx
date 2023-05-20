@@ -57,11 +57,14 @@ const InvitationModal: React.FC<InvitationModalProps> = ({ open, onHide, onSucce
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name: fullName, email: email }),
         });
-        const text = await response.text();
+        
         if (response.status === 200) {
           onSuccess();
         } else {
-          setServerError(text);
+          const text = await response.text();
+          const json = JSON.parse(text);
+          const errorMessage = json.errorMessage;
+          setServerError(errorMessage);
         }
       } catch (error) {
         console.log(error);
