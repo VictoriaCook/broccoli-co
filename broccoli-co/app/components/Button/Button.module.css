@@ -3,7 +3,7 @@
     border: 1px solid var(--color-lime);
     border-radius: 4px;
     color: var(--color-dark-green);
-    display: flex;
+    display: center;
     cursor: pointer;
     font-size: 14px;
     font-weight: 550;
