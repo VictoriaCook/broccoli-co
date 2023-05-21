@@ -60,21 +60,22 @@ const InvitationModal: React.FC<InvitationModalProps> = ({ open, onHide, onSucce
         
         if (response.status === 200) {
           onSuccess();
+          setFullName('');
+          setEmail('');
+          setConfirmEmail('');
+          setValidationError('');
+          setIsLoading('Send');
         } else {
           const text = await response.text();
           const json = JSON.parse(text);
           const errorMessage = json.errorMessage;
+          setIsLoading('Send');
           setServerError(errorMessage);
         }
       } catch (error) {
         console.log(error);
       }
     }
-
-    setFullName('');
-    setEmail('');
-    setConfirmEmail('');
-    setIsLoading('Send');
   };
 
   return (
