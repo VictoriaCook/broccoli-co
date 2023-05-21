@@ -9,12 +9,13 @@ describe('HomePage', () => {
     
     expect(screen.getByRole('banner')).toBeInTheDocument();
 
-    expect(screen.getByText((content: any, element: any) => {
-        const hasText = (text: string) => element.textContent === text;
-        const titleText = 'A better way to enjoy every day';
+    expect(screen.queryByText((content: any, element: any) => {
+      const hasText = (text: string) => element.textContent.replace(/\s/g, ' ').trim() === text;
+      const titleText = 'A better way to enjoy every day';
   
-        return hasText(titleText);
-      })).toBeInTheDocument();
+      return hasText(titleText);
+    })).toBeInTheDocument();
+  
 
     expect(screen.getByText((content: any, element: any) => {
         const hasText = (text: string) => element.textContent === text;
