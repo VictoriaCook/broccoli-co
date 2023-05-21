@@ -8,6 +8,7 @@ import BodyText from './components/BodyText/BodyText';
 import InvitationModal from './components/InvitationModal/InvitationModal';
 import InvitationSuccessModal from './components/InvitationSuccessModal/InvitationSuccessModal';
 import HighlightText from './components/HighlightText/HighlightText';
+import styles from './page.module.css';
 
 export default function HomePage() {
   const [isInvitationModalOpen, setIsInvitationModalOpen] = useState(false);
@@ -21,8 +22,8 @@ export default function HomePage() {
   return (
     <>
       <Header />
-      <main>
-        <Title>A <HighlightText text="better"/> way to enjoy every day</Title>
+      <main className={styles.contentContainer}>
+        <Title>A <HighlightText text="better"/> way <span className={styles.titleBreak}>to enjoy every day</span> </Title>
         <BodyText>Be the <HighlightText text="first"/> to know when we launch.</BodyText>
         <Button buttonText="Request an invite" onClick={() => setIsInvitationModalOpen(true)}/>
       </main>
