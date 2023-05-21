@@ -20,7 +20,7 @@ const InvitationModal: React.FC<InvitationModalProps> = ({ open, onHide, onSucce
   const [confirmEmail, setConfirmEmail] = useState('');
   const [validationError, setValidationError] = useState('');
   const [serverError, setServerError] = useState('');
-  const [submitButtonText, setSubmitButtonText] = useState('Send');
+  const [isLoading, setIsLoading] = useState('Send');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { target } = e;
@@ -50,7 +50,7 @@ const InvitationModal: React.FC<InvitationModalProps> = ({ open, onHide, onSucce
     } else if (!areEmailsEqual(email, confirmEmail)) {
       setValidationError('Emails do not match. Please try again.');
     } else {
-      setSubmitButtonText('Sending, please wait...');
+      setIsLoading('Sending, please wait...');
       try {
         const response = await fetch('https://us-central1-blinkapp-684c1.cloudfunctions.net/fakeAuth', {
           method: 'POST',
@@ -60,10 +60,16 @@ const InvitationModal: React.FC<InvitationModalProps> = ({ open, onHide, onSucce
         
         if (response.status === 200) {
           onSuccess();
+          setFullName('');
+          setEmail('');
+          setConfirmEmail('');
+          setValidationError('');
+          setIsLoading('Send');
         } else {
           const text = await response.text();
           const json = JSON.parse(text);
           const errorMessage = json.errorMessage;
+          setIsLoading('Send');
           setServerError(errorMessage);
         }
       } catch (error) {
@@ -80,7 +86,7 @@ const InvitationModal: React.FC<InvitationModalProps> = ({ open, onHide, onSucce
           <TextInput name="fullName" value={fullName} label="fullName" isVisuallyHidden={true} placeholder="Full name" onChange={handleInputChange} />
           <TextInput name="email" value={email} label="email" isVisuallyHidden={true} placeholder="Email" onChange={handleInputChange} />
           <TextInput name="confirmEmail" value={confirmEmail} isVisuallyHidden={true} label="confirmEmail" placeholder="Confirm email" onChange={handleInputChange} />
-          <SubmitButton buttonText={submitButtonText} />
+          <SubmitButton buttonText={isLoading} />
           <p className={styles.serverErrorStyles}>{serverError}</p>
         </Form>
       </Modal>
