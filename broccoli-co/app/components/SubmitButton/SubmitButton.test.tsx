@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 import SubmitButton from './SubmitButton';
 
 describe('SubmitButton', () => {
-  test('renders button with correct text', () => {
+  it('renders button with correct text', () => {
     const buttonText = 'Submit';
     render(<SubmitButton buttonText={buttonText} />);
     
