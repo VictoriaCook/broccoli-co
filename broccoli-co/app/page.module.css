@@ -116,6 +116,10 @@
   gap: 1rem;
 }
 
+.titleBreak {
+  display: block;
+}
+
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .card:hover {

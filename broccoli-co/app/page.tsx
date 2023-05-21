@@ -23,7 +23,7 @@ export default function HomePage() {
     <>
       <Header />
       <main className={styles.contentContainer}>
-        <Title>A <HighlightText text="better"/> way to enjoy every day</Title>
+        <Title>A <HighlightText text="better"/> way <span className={styles.titleBreak}>to enjoy every day</span> </Title>
         <BodyText>Be the <HighlightText text="first"/> to know when we launch.</BodyText>
         <Button buttonText="Request an invite" onClick={() => setIsInvitationModalOpen(true)}/>
       </main>
