@@ -8,6 +8,7 @@ interface Props {
   isVisuallyHidden?: boolean;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
+  errorMessage?: any;
 }
 
 const TextInput: React.FC<Props> = (props) => {
