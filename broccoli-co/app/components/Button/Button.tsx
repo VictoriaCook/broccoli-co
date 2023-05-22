@@ -1,5 +1,5 @@
-import React, { FC, MouseEvent } from 'react';
-import styles from './Button.module.css';
+import React, { FC, MouseEvent } from "react";
+import styles from "./Button.module.css";
 
 interface ButtonProps {
   onClick: (event: MouseEvent<HTMLButtonElement>) => void;
@@ -8,7 +8,9 @@ interface ButtonProps {
 
 const Button: FC<ButtonProps> = (props) => {
   return (
-    <button className={styles.buttonStyles} onClick={props.onClick}>{props.buttonText}</button>
+    <button className={styles.buttonStyles} onClick={props.onClick}>
+      {props.buttonText}
+    </button>
   );
 };
 

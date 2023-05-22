@@ -1,17 +1,17 @@
 .successDivStyles {
-    background-color: var(--color-dark-green);
-    margin: 10px;
-    width: 100%;
-    text-align: center;
+  background-color: var(--color-dark-green);
+  margin: 10px;
+  width: 100%;
+  text-align: center;
 }
 
 .successH2Styles {
-    color: var(--color-cream);
-    width: 100%;
-    text-align: center;
+  color: var(--color-cream);
+  width: 100%;
+  text-align: center;
 }
 
 .successTextStyles {
-    color: var(--color-cream);
-    padding: 10px;
+  color: var(--color-cream);
+  padding: 10px;
 }

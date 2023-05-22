@@ -1,23 +1,7 @@
 .serverErrorStyles {
-    color: var(--color-cream);
+  color: var(--color-cream);
 }
 
 .modalStyles .ant-modal-content {
-    background-color: var(--color-dark-green) !important;
+  background-color: var(--color-dark-green) !important;
 }
-
-/* .ant-modal-header {
-    background-color: var(--color-dark-green);
-}
-
-.ant-modal-footer {
-    background-color: var(--color-dark-green);
-}
-
-.ant-modal-body {
-    background-color: var(--color-dark-green);
-}
-
-.ant-modal-content {
-    background-color: var(--color-dark-green);
-} */

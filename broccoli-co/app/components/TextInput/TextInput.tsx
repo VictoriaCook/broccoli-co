@@ -1,5 +1,5 @@
-import React, { ChangeEvent } from 'react';
-import styles from './TextInput.module.css';
+import React, { ChangeEvent } from "react";
+import styles from "./TextInput.module.css";
 
 interface Props {
   label: string;
@@ -8,7 +8,8 @@ interface Props {
   isVisuallyHidden?: boolean;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
-};
+  errorMessage?: any;
+}
 
 const TextInput: React.FC<Props> = (props) => {
   const id = `id_${props.name}`;
@@ -16,7 +17,9 @@ const TextInput: React.FC<Props> = (props) => {
 
   return (
     <div>
-      <label htmlFor={id} className={labelClassName}>{props.label}</label>
+      <label htmlFor={id} className={labelClassName}>
+        {props.label}
+      </label>
       <input
         className={styles.textInputStyles}
         type="text"
