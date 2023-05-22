@@ -2,15 +2,15 @@
   --color-dark-green: #223c2c;
   --color-lime: #a5d85e;
   --color-sage: #78a474;
-  --color-cream: #FEFAE0;
+  --color-cream: #fefae0;
   --color-dark-grey: #4a4a4a;
-  --color-pink: #E4A0B7;
+  --color-pink: #e4a0b7;
 
   --max-width: 1100px;
   --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -94,7 +94,7 @@ body {
 }
 
 body {
-  background-color: var(--color-dark-green)
+  background-color: var(--color-dark-green);
   /* color: rgb(var(--foreground-rgb)); */
   /* background: linear-gradient(
       to bottom,

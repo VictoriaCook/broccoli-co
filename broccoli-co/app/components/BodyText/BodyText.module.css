@@ -1,12 +1,12 @@
 .bodyTextStyles {
-    font-size: 1.5rem;
-    line-height: 1.5;
-    text-align: center;
-    margin: 1rem 1.5rem 1.5rem 1.5rem;
-    padding: 0;
-    color: var(--color-cream);
+  font-size: 1.5rem;
+  line-height: 1.5;
+  text-align: center;
+  margin: 1rem 1.5rem 1.5rem 1.5rem;
+  padding: 0;
+  color: var(--color-cream);
 }
 
 .bodyTextAccentStyles {
-    color: var(--color-pink);
+  color: var(--color-pink);
 }

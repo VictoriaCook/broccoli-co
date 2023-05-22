@@ -1,10 +1,10 @@
 .titleStyles {
-    font-size: 3em;
-    text-align: center;
-    color: var(--color-cream);
-    margin-top: 18%;
+  font-size: 3em;
+  text-align: center;
+  color: var(--color-cream);
+  margin-top: 18%;
 }
 
 .titleAccentStyles {
-    color: var(--color-pink);
+  color: var(--color-pink);
 }

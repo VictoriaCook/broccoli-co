@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from './SubmitButton.module.css'
+import React from "react";
+import styles from "./SubmitButton.module.css";
 
 interface SubmitButtonProps {
   buttonText: string;
@@ -8,7 +8,11 @@ interface SubmitButtonProps {
 const SubmitButton: React.FC<SubmitButtonProps> = (props) => {
   return (
     <div>
-      <input className={styles.submitButtonStyles} type="submit" value={props.buttonText} />
+      <input
+        className={styles.submitButtonStyles}
+        type="submit"
+        value={props.buttonText}
+      />
     </div>
   );
 };
