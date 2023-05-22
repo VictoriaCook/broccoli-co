@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Modal } from "antd";
 import Form from "../Form/Form";
 import TextInput from "../TextInput/TextInput";
@@ -22,7 +22,11 @@ const InvitationModal: React.FC<InvitationModalProps> = ({
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [confirmEmail, setConfirmEmail] = useState("");
-  const [validationError, setValidationError] = useState("");
+  const [validationError, setValidationError] = useState<{
+    fullName?: string;
+    email?: string;
+    confirmEmail?: string;
+  }>({});
   const [serverError, setServerError] = useState("");
   const [isLoading, setIsLoading] = useState("Send");
 
@@ -42,19 +46,36 @@ const InvitationModal: React.FC<InvitationModalProps> = ({
     }
   };
 
+  const validateForm = () => {
+    const errors: {
+      fullName?: string;
+      email?: string;
+      confirmEmail?: string;
+    } = {};
+
+      if(!fullName || !isFullNameValid(fullName)) {
+        errors.fullName = 'Your full name must be at least three letters.';
+       }
+  
+       if(!email || !isEmailValid(email)) {
+         errors.email = 'Please provide a valid email address';
+       }
+  
+       if(!confirmEmail || !areEmailsEqual(email, confirmEmail)) {
+         errors.confirmEmail = 'Emails do not match.';
+       }
+  
+      return errors;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!fullName || !email || !confirmEmail) {
-      setValidationError("Please complete all fields.");
-    } else if (!isFullNameValid(fullName)) {
-      setValidationError(
-        "Your full name must be at least three letters. Please try again."
-      );
-    } else if (!isEmailValid(email)) {
-      setValidationError("Please enter a valid email address.");
-    } else if (!areEmailsEqual(email, confirmEmail)) {
-      setValidationError("Emails do not match. Please try again.");
+    const errors = validateForm();
+
+    if (errors.email || errors.fullName || errors.confirmEmail) {
+      setValidationError(errors);
+      return;
     } else {
       setIsLoading("Sending, please wait...");
       try {
@@ -66,23 +87,26 @@ const InvitationModal: React.FC<InvitationModalProps> = ({
             body: JSON.stringify({ name: fullName, email: email }),
           }
         );
-
+  
         if (response.status === 200) {
           onSuccess();
           setFullName("");
           setEmail("");
           setConfirmEmail("");
-          setValidationError("");
+          setValidationError({});
           setIsLoading("Send");
+          setServerError("");
         } else {
           const text = await response.text();
           const json = JSON.parse(text);
-          const errorMessage = json.errorMessage;
+          const serverErrorMessage = json.errorMessage;
           setIsLoading("Send");
-          setServerError(errorMessage);
+          setServerError(serverErrorMessage);
         }
       } catch (error) {
         console.log(error);
+        setIsLoading("Send");
+        setServerError("An error occurred. Please try again.");
       }
     }
   };
@@ -99,7 +123,6 @@ const InvitationModal: React.FC<InvitationModalProps> = ({
         onCancel={onHide}
       >
         <Form onSubmit={handleSubmit} formHeading="Request an invite">
-          <p>{validationError}</p>
           <TextInput
             name="fullName"
             value={fullName}
@@ -108,6 +131,7 @@ const InvitationModal: React.FC<InvitationModalProps> = ({
             placeholder="Full name"
             onChange={handleInputChange}
           />
+          {validationError.fullName && <p>{validationError.fullName}</p>}
           <TextInput
             name="email"
             value={email}
@@ -116,6 +140,7 @@ const InvitationModal: React.FC<InvitationModalProps> = ({
             placeholder="Email"
             onChange={handleInputChange}
           />
+          {validationError.email && <p>{validationError.email}</p>}
           <TextInput
             name="confirmEmail"
             value={confirmEmail}
@@ -124,6 +149,7 @@ const InvitationModal: React.FC<InvitationModalProps> = ({
             placeholder="Confirm email"
             onChange={handleInputChange}
           />
+          {validationError.confirmEmail && <p>{validationError.confirmEmail}</p>}
           <SubmitButton buttonText={isLoading} />
           <p className={styles.serverErrorStyles}>{serverError}</p>
         </Form>
