@@ -53,19 +53,19 @@ const InvitationModal: React.FC<InvitationModalProps> = ({
       confirmEmail?: string;
     } = {};
 
-      if(!fullName || !isFullNameValid(fullName)) {
-        errors.fullName = 'Your full name must be at least three letters.';
-       }
-  
-       if(!email || !isEmailValid(email)) {
-         errors.email = 'Please provide a valid email address';
-       }
-  
-       if(!confirmEmail || !areEmailsEqual(email, confirmEmail)) {
-         errors.confirmEmail = 'Emails do not match.';
-       }
-  
-      return errors;
+    if (!fullName || !isFullNameValid(fullName)) {
+      errors.fullName = "Your full name must be at least three letters.";
+    }
+
+    if (!email || !isEmailValid(email)) {
+      errors.email = "Please provide a valid email address";
+    }
+
+    if (!confirmEmail || !areEmailsEqual(email, confirmEmail)) {
+      errors.confirmEmail = "Emails do not match.";
+    }
+
+    return errors;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -87,7 +87,7 @@ const InvitationModal: React.FC<InvitationModalProps> = ({
             body: JSON.stringify({ name: fullName, email: email }),
           }
         );
-  
+
         if (response.status === 200) {
           onSuccess();
           setFullName("");
@@ -149,7 +149,9 @@ const InvitationModal: React.FC<InvitationModalProps> = ({
             placeholder="Confirm email"
             onChange={handleInputChange}
           />
-          {validationError.confirmEmail && <p>{validationError.confirmEmail}</p>}
+          {validationError.confirmEmail && (
+            <p>{validationError.confirmEmail}</p>
+          )}
           <SubmitButton buttonText={isLoading} />
           <p className={styles.serverErrorStyles}>{serverError}</p>
         </Form>

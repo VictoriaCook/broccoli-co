@@ -20,8 +20,12 @@ describe("InvitationModal", () => {
     const submitButton = getByText("Send");
     fireEvent.click(submitButton);
 
-    expect(getByText("Your full name must be at least three letters.")).toBeInTheDocument();
-    expect(getByText("Please provide a valid email address")).toBeInTheDocument();
+    expect(
+      getByText("Your full name must be at least three letters.")
+    ).toBeInTheDocument();
+    expect(
+      getByText("Please provide a valid email address")
+    ).toBeInTheDocument();
     expect(getByText("Emails do not match.")).toBeInTheDocument();
   });
 });
